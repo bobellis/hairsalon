@@ -19,6 +19,7 @@ describe(Stylist) do
   describe(".all") do
     it("returns an array of all stylists") do
       test_stylist = Stylist.new({:name => "Joan", :id => nil})
+      test_stylist.save()
       expect(test_stylist.all()).to(eq([test_stylist]))
     end
   end
