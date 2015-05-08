@@ -1,0 +1,25 @@
+<h1><%= @client.name() %></h1>
+
+<form action="/client/<%= @client.id %> "method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="client_name">Client's new name:</label>
+  <input id="new_name" name="new_name" type="text" value="<%= @client.name() %>">
+
+  <button type="submit" class="btn btn-success">Change</button>
+</form>
+
+<% if @stylists.any?() %>
+  <form action="/client/<%= @client.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+
+    <% @stylists.each() do |stylist| %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="stylist_ids[]" value="<%= stylist.id() %>"><%= stylist.name() %>
+        </label>
+      </div>
+    <% end %>
+
+    <button type="submit">Add stylist</button>
+  </form>
+<% end %>

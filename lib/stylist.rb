@@ -41,7 +41,19 @@ define_method(:update) do |attributes|
 end
 
 define_method(:delete) do
-  DB.exec("DELETE FROM stylists WHERE id = #{self.id()};")  
+  DB.exec("DELETE FROM stylists WHERE id = #{self.id()};")
+end
+
+define_method(:clients) do
+  stylists_clients = []
+  results = DB.exec("SELECT id FROM clients WHERE stylist_id = #{self.id()};")
+  results.each() do |result|
+    client_id = result.fetch("id").to_i()
+    client = DB.exec("SELECT * FROM clients WHERE id = #{id};")
+    name = client.first().fetch("name")
+    stylists_clients.push(Client.new({:name => name, :id => id}))
+  end
+  stylists_clients
 end
 
 end

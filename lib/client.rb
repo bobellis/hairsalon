@@ -23,8 +23,8 @@ class Client
     @id = result.first().fetch("id").to_i()
   end
 
-  define_method(:==) do |anoter_client|
-    self.name().==(anoter_client.name()).&(self.id().==(anoter_client.id()))
+  define_method(:==) do |another_client|
+    self.name().==(another_client.name()).&(self.id().==(another_client.id()))
   end
 
   define_singleton_method(:find) do |id|
@@ -43,5 +43,7 @@ class Client
   define_method(:delete) do
     DB.exec("DELETE FROM clients WHERE id = #{self.id()};")
   end
+
+
 
 end
