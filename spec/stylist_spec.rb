@@ -20,8 +20,18 @@ describe(Stylist) do
     it("returns an array of all stylists") do
       test_stylist = Stylist.new({:name => "Joan", :id => nil})
       test_stylist.save()
-      expect(test_stylist.all()).to(eq([test_stylist]))
+      expect(Stylist.all()).to(eq([test_stylist]))
     end
   end
-  
+
+  describe(".find") do
+    it("returns a specific stylist by id") do
+      test_stylist = Stylist.new({:name => "Joan", :id => nil})
+      test_stylist.save()
+      test_stylist2 = Stylist.new({:name => "Greg", :id => nil})
+      test_stylist2.save()
+      expect(Stylist.find(test_stylist2.id())).to(eq(test_stylist2))
+    end
+  end
+
 end
