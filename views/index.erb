@@ -1,0 +1,25 @@
+<h1> Welcome to Salon Studio Express 5.0 </h1>
+
+
+
+<%if @stylists.any?()%>
+<ul>
+  <% @stylists.each do |stylist| %>
+  <li><a href="/stylists/<%= stylist.id() %>"<% stylist.name() %></a></li>
+  <% end %>
+</ul>
+<%else%>
+<p><h2>There are no stylists in your database</h2></p>
+<%end%>
+<p><a href="/stylists">Add a new stylist</a></p>
+
+<%if @clients.any?()%>
+<ul>
+  <% @clients.each do |client| %>
+  <li><a href="/clients/<%= client.id() %>"<% client.name() %></a></li>
+  <% end %>
+</ul>
+<%else%>
+<p><h2>There are no clients in your database</h2></p>
+<%end%>
+<p><a href="/clients">Add a new client</a></p>
