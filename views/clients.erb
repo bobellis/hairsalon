@@ -1,0 +1,23 @@
+<h1> Add your clients here: </h1>
+
+
+<%if @clients.any?()%>
+<ul>
+  <% @clients.each do |client| %>
+  <li><a href="/clients/<%= client.id() %>"><%= client.name() %></a></li>
+  <% end %>
+</ul>
+<%else%>
+<p><h2>There are no clients in your database</h2></p>
+<%end%>
+
+<p> </p>
+
+
+<form action="/clients" method="post">
+  <label for="client_name">Client's name:</label>
+  <input id="client_name" name="client_name" type="text">
+<p>
+  <button type="submit" class="btn btn-success">Add client</button>
+</p>
+</form>

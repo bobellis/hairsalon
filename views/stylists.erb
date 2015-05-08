@@ -1,0 +1,23 @@
+<h1> Add your stylists here: </h1>
+
+
+<%if @stylists.any?()%>
+<ul>
+  <% @stylists.each do |stylist| %>
+  <li><a href="/stylists/<%= stylist.id() %>"><%= stylist.name() %></a></li>
+  <% end %>
+</ul>
+<%else%>
+<p><h2>There are no stylists in your database</h2></p>
+<%end%>
+
+<p> </p>
+
+
+<form action="/stylists" method="post">
+  <label for="stylist_name">Stylist's name:</label>
+  <input id="stylist_name" name="stylist_name" type="text">
+<p>
+  <button type="submit" class="btn btn-success">Add stylist</button>
+</p>
+</form>
